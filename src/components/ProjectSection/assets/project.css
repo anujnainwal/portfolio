@@ -1,0 +1,74 @@
+/* ProjectCard.css */
+.card {
+    cursor: pointer;
+    position: relative;
+    width: 100%;
+    max-width: 300px;
+    height: auto; /* Auto height to adjust based on content */
+    max-height: fit-content; /* Minimum height of 50% viewport height */
+    perspective: 1000px; /* Add 3D perspective */
+    transition: transform 0.5s;
+    display: flex; /* Make card's children flex items */
+    flex-direction: column; /* Stack children vertically */
+  }
+  
+  .cardContent {
+    flex-grow: 1; /* Grow to fill available space */
+    transform-style: preserve-3d;
+    transition: transform 0.5s;
+    backface-visibility: hidden;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    padding: 16px;
+  }
+  
+  .cardReveal {
+    transform: rotateY(180deg);
+  }
+  
+  .footer {
+    padding: 16px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    border-top: 1px solid #ddd;
+  }
+  
+  /* Additional Styling (unchanged) */
+  .card img {
+    max-width: 100%;
+    height: auto;
+  }
+  
+  .card h5 {
+    margin-bottom: 8px;
+  }
+  
+  .card p {
+    color: #555;
+  }
+  
+  .card a {
+    text-decoration: none;
+    color: #2196F3;
+    transition: color 0.3s;
+  }
+  
+  .card a:hover {
+    color: #1976D2;
+  }
+  
+  .card .footer a {
+    color: #2196F3;
+    text-decoration: none;
+    transition: color 0.3s;
+  }
+  
+  .card .footer a:hover {
+    color: #1976D2;
+  }
+  

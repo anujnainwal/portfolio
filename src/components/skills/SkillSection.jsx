@@ -1,23 +1,24 @@
-import { Box, Typography } from "@mui/material";
+import { Box } from "@mui/material";
 import React from "react";
+import SkillBox from "./SkillBox";
+import { SkillSet } from "./Dataset";
 
 const SkillSection = () => {
   return (
     <Box
       sx={{
         height: "90vh",
+
         background: "#050a0eea",
         display: "flex",
-        alignContent: "center",
+        flexWrap: "wrap",
+        justifyContent: "center",
+        padding: 2,
       }}>
-      <Box sx={{ margin: "10px 0", width: "100%" }}>
-        <Typography
-          component="div"
-          color="#fff"
-          sx={{ textAlign: "center !important" }}>
-          I have skilled in
-        </Typography>
-      </Box>
+      {SkillSet.length > 0 &&
+        SkillSet.map((items, index) => {
+          return <SkillBox items={items} />;
+        })}
     </Box>
   );
 };

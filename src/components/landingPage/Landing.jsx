@@ -43,12 +43,14 @@ const Landing = () => {
   return (
     <Box
       sx={{
-        height: 565,
         background: "#050a0eea",
         display: "flex",
+        height: "90vh",
         alignItems: "center",
-        flexDirection: " column",
+        flexDirection: "column",
         justifyContent: "center",
+        padding: "20px", // Add some padding for spacing
+        textAlign: "center",
       }}>
       <Typography variant="h3" color="#fff">
         Anuj Singh Nainwal
@@ -79,14 +81,15 @@ const Landing = () => {
           </span>
         </Typography>
       </Box>
-      <Box component="div" sx={{ padding: "30px 0px", display: "flex" }}>
+      <Box
+        component="div"
+        sx={{ padding: "30px 0px", display: "flex", gap: "20px" }}>
         {socialLinks.length > 0 &&
           socialLinks.map((links) => {
             return (
               <NavLink
                 to={links.path}
                 key={links.id}
-                style={{ padding: "0 10px" }}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="icons_links">

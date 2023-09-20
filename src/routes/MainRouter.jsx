@@ -6,6 +6,7 @@ import Skill from "../pages/Skill/Skill";
 import Education from "../pages/Education/Education";
 import Experience from "../pages/Experience/Experience";
 import Project from "../pages/Project/Project";
+import Resume from "../pages/resume/Resume";
 const MainRouter = () => {
   return (
     <>
@@ -16,7 +17,7 @@ const MainRouter = () => {
         <Route path="/education" element={<Education />} />
         <Route path="/experience" element={<Experience />} />
         <Route path="/projects" element={<Project />} />
-        <Route path="/resume" element={<h2>Resume</h2>} />
+        <Route path="/resume" element={<Resume />} />
 
         <Route path="/*" element={<>Not Found</>} />
       </Routes>

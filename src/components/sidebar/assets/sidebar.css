@@ -1,0 +1,17 @@
+/* assets/sidebar.css */
+
+/* Default styles for the sidebar */
+.navLink {
+    display: block;
+    padding: 10px 16px;
+    text-decoration: none;
+    color: #d8d7d7;
+  }
+  
+  /* Style for the active link */
+  .navLink.active {
+    background-color: #3498db;
+    color: #00ff80;
+  }
+  
+ 

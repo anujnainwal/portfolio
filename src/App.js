@@ -11,7 +11,7 @@ function App() {
         <MainRouter />
         <AnimatedCursor
           innerSize={20}
-          outerSize={20}
+          outerSize={15}
           color="193, 11, 111"
           outerAlpha={0.2}
           innerScale={0.7}
@@ -28,6 +28,7 @@ function App() {
             "textarea",
             "button",
             ".link",
+            "iframe",
             {
               target: ".custom",
               options: {

@@ -38,7 +38,18 @@ export default function Navbar() {
               noWrap
               component="div"
               sx={{ display: { xs: "none", sm: "block" } }}>
-              Anuj Singh
+              <NavLink to="/" style={{ color: "#fff" }}>
+                Anuj Singh
+              </NavLink>
+            </Typography>
+            <Typography
+              variant="h6"
+              noWrap
+              component="div"
+              sx={{ display: { xs: "block", sm: "none" } }}>
+              <NavLink to="/" style={{ color: "#fff" }}>
+                Anuj Singh
+              </NavLink>
             </Typography>
 
             <Box sx={{ flexGrow: 1 }} />

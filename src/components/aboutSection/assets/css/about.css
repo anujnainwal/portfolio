@@ -1,4 +1,13 @@
 /* Shine */
+
+.aboutSection{
+	background: #050a0eea;
+	padding: 4;
+	height: fit-content;
+	min-height: 100vh;
+
+}
+
 .hover14 figure {
 	position: relative;
 }

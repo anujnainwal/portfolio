@@ -4,12 +4,7 @@ import "./assets/css/about.css";
 
 const AboutSection = () => {
   return (
-    <Box
-      sx={{
-        background: "#050a0eea",
-        height: "90vh",
-        py: 4,
-      }}>
+    <Box className="aboutSection">
       <Container maxWidth="lg">
         <Grid container spacing={4}>
           <Grid item xs={12} md={6}>

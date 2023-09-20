@@ -5,16 +5,7 @@ import { SkillSet } from "./Dataset";
 
 const SkillSection = () => {
   return (
-    <Box
-      sx={{
-        height: "90vh",
-
-        background: "#050a0eea",
-        display: "flex",
-        flexWrap: "wrap",
-        justifyContent: "center",
-        padding: 2,
-      }}>
+    <Box className="skillSection">
       {SkillSet.length > 0 &&
         SkillSet.map((items, index) => {
           return <SkillBox items={items} />;

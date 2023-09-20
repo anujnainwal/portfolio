@@ -1,5 +1,16 @@
 /* project.css */
 
+.skillSection{
+  height: fit-content;
+
+  background: #050a0eea;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  padding: 2;
+  min-height: 90vh;
+}
+
 .skill_box {
   display: flex;
   flex-direction: column;

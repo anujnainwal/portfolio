@@ -6,7 +6,7 @@ import {
 } from "react-vertical-timeline-component";
 import "react-vertical-timeline-component/style.min.css";
 import { MdWork } from "react-icons/md";
-
+import "./asset/css/experience.css";
 const info = [
   "Developed dynamic image web applications, enabling users to generate customized images and text.",
   "Created and implemented an OpenAI chatbot, enhancing user engagement and interaction.",
@@ -17,13 +17,7 @@ const info = [
 
 const ExperienceSection = () => {
   return (
-    <Box
-      sx={{
-        background: "#050a0eea",
-        padding: "2rem 0",
-        height: "90vh",
-        textAlign: "center",
-      }}>
+    <Box className="experienceSection">
       <Typography
         variant="h4"
         component="h1"
@@ -36,28 +30,31 @@ const ExperienceSection = () => {
       <VerticalTimeline>
         <VerticalTimelineElement
           className="vertical-timeline-element--work"
-          contentStyle={{ background: "rgb(119, 139, 235)", color: "#fff" }}
+          contentStyle={{ background: "rgb(19, 49, 64)", color: "#fff" }}
           contentArrowStyle={{ borderRight: "7px solid  rgb(33, 150, 243)" }}
-          date="2022 - 2023"
           iconStyle={{ background: "rgb(33, 150, 243)", color: "#fff" }}
           icon={<MdWork />}>
           <Typography
             variant="h5"
             sx={{
-              color: "#fff",
-              marginBottom: "0.5rem",
+              color: "#ececec",
+              marginBottom: "1rem",
             }}>
             Associate Software Developer
           </Typography>
           <Typography
             variant="subtitle1"
             sx={{
-              color: "#fff",
+              color: "#ececec",
               marginBottom: "1rem",
+              display: "flex",
+              justifyContent: "space-between",
             }}>
-            Detroit Software Consultants India Private Limited
+            <span> Detroit Software Consultants India Private Limited</span>
+            <span> 2022 - 2023</span>
           </Typography>
-          <ul>
+
+          <ul className="experienceList">
             {info.map((item, index) => (
               <li key={index} className="experienceInfo">
                 {item}

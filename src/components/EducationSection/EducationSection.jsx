@@ -6,15 +6,10 @@ import {
 } from "react-vertical-timeline-component";
 import "react-vertical-timeline-component/style.min.css";
 import { FaUserGraduate, FaSchool } from "react-icons/fa";
+import "./assets/css/educations.css";
 const EducationSection = () => {
   return (
-    <Box
-      sx={{
-        height: "90vh",
-        background: "#050a0eea",
-        display: "flex",
-        alignContent: "center",
-      }}>
+    <Box className="educationSection">
       <VerticalTimeline>
         <VerticalTimelineElement
           className="vertical-timeline-element--work"

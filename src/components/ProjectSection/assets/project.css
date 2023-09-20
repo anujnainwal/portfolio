@@ -1,3 +1,15 @@
+.projectSection{
+  height: "fit-content";
+
+  background: #0e1b25de;
+  display: flex;
+  max-height: "100vh";
+  padding: "15px 15px";
+  flex-wrap: "wrap",
+}
+
+
+
 /* ProjectCard.css */
 .card {
     cursor: pointer;

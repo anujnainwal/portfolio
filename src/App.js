@@ -3,12 +3,14 @@ import "./App.css";
 import { ThemeProvider } from "./components/contexts/themeContext";
 import AnimatedCursor from "react-animated-cursor";
 import MainRouter from "./routes/MainRouter";
+import ImageSlider from "./components/ImageSlider/ImageSlider";
 
 function App() {
   return (
     <div className="App">
       <ThemeProvider>
         <MainRouter />
+
         <AnimatedCursor
           innerSize={20}
           outerSize={15}

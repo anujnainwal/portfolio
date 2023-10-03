@@ -1,0 +1,35 @@
+/* imageSlider.css */
+
+.image-slider-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    position: relative;
+  }
+  
+  .image-slider-image {
+    max-width: 100%; /* Ensure the image fits within the modal */
+    /* height: auto; */
+    display: block; /* Remove image border spacing */
+    margin: 0 auto; /* Center the image horizontally */
+  }
+  
+  /* Style the buttons */
+
+  .imageButton{
+    background: #e9e9e9 !important;
+    text-transform: none !important;
+    color: #000 !important;
+    font-size: 15px;
+    padding: 5px 10px;
+    border-radius: 10px;
+
+  }  
+  .imageButton:hover{
+    background: #fa902c !important;
+    text-transform: none !important;
+    color: #e2e2e2 !important;
+
+  }

@@ -2,10 +2,11 @@
 
 .aboutSection{
 	background: #050a0eea;
-	padding: 4;
+	padding: 10px;
 	height: fit-content;
-	min-height: 100vh;
-
+	min-height: 90vh;
+	display: flex;
+	align-items: center;
 }
 
 .hover14 figure {
@@ -30,35 +31,10 @@
 	-webkit-transform: skewX(-25deg);
 	transform: skewX(-25deg);
 }
-.hover14 figure:hover::before {
-	-webkit-animation: shine .75s;
-	animation: shine .75s;
-}
-@-webkit-keyframes shine {
-	100% {
-		left: 125%;
-	}
-}
-@keyframes shine {
-	100% {
-		left: 125%;
-	}
-}
 
 
 
-figure {
-	width: 300px;
-	height: 200px;
-	margin: 0;
-	padding: 0;
-	background: #fff;
-	overflow: hidden;
-}
-figure:hover+span {
-	bottom: -36px;
-	opacity: 1;
-}
-.hover14 figure img{
-    background-size: cover cover;
-}
+.column img{
+	
+	width: 60%;
+} 

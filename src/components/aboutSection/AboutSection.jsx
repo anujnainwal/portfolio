@@ -1,10 +1,11 @@
 import React from "react";
 import { Box, Container, Grid, Typography } from "@mui/material";
 import "./assets/css/about.css";
+import AboutImage from "./assets/image/photo.jpg";
 
 const AboutSection = () => {
   return (
-    <Box className="aboutSection">
+    <Box component="div" className="aboutSection">
       <Container maxWidth="lg">
         <Grid container spacing={4}>
           <Grid item xs={12} md={6}>
@@ -12,7 +13,7 @@ const AboutSection = () => {
               variant="h4"
               component="h1"
               sx={{
-                color: "#fff",
+                color: "#546de5",
                 marginBottom: 2,
               }}>
               👋 Hello! I'm Anuj Singh Nainwal
@@ -20,8 +21,9 @@ const AboutSection = () => {
             <Typography
               variant="body1"
               sx={{
-                color: "#fff",
+                color: "#c8d6e5",
                 lineHeight: 1.6,
+                fontSize: 18,
               }}>
               With 1.2 years of hands-on experience, I have been on a thrilling
               journey in the world of software development. My expertise lies in
@@ -46,18 +48,16 @@ const AboutSection = () => {
           </Grid>
           <Grid item xs={12} md={6}>
             <div className="hover14 column">
-              <figure style={{ width: "100%", height: "100%" }}>
-                <img
-                  src="https://staticg.sportskeeda.com/editor/2023/07/1e42b-16888837576290-1920.jpg"
-                  alt="user"
-                  style={{
-                    objectFit: "cover",
-                    width: "100%",
-                    height: "100%",
-                    borderRadius: "8px",
-                  }}
-                />
-              </figure>
+              <img
+                src={AboutImage}
+                alt="user"
+                style={{
+                  objectFit: "cover",
+
+                  height: "50%",
+                  borderRadius: "8px",
+                }}
+              />
             </div>
           </Grid>
         </Grid>

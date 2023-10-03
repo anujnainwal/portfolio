@@ -3,7 +3,6 @@ import "./App.css";
 import { ThemeProvider } from "./components/contexts/themeContext";
 import AnimatedCursor from "react-animated-cursor";
 import MainRouter from "./routes/MainRouter";
-import ImageSlider from "./components/ImageSlider/ImageSlider";
 
 function App() {
   return (

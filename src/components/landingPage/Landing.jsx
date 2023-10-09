@@ -65,7 +65,7 @@ const Landing = () => {
               }}
               onInit={(typewriter) => {
                 typewriter
-                  .typeString(" Frontend Developer")
+                  .typeString(" MERN Stack Developer")
                   .callFunction(() => {
                     console.log("String typed out!");
                   })

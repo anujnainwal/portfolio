@@ -45,7 +45,7 @@ const Landing = () => {
       sx={{
         background: "#050a0eea",
         display: "flex",
-        height: "90vh",
+        height: "90dvh",
         alignItems: "center",
         flexDirection: "column",
         justifyContent: "center",

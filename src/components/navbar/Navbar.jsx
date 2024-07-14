@@ -30,14 +30,16 @@ export default function Navbar() {
               edge="start"
               color="inherit"
               aria-label="open drawer"
-              sx={{ mr: 2 }}>
+              sx={{ mr: 2 }}
+            >
               {/* <MenuIcon /> */}
             </IconButton>
             <Typography
               variant="h6"
               noWrap
               component="div"
-              sx={{ display: { xs: "none", sm: "block" } }}>
+              sx={{ display: { xs: "none", sm: "block" } }}
+            >
               <NavLink to="/" style={{ color: "#fff" }}>
                 Anuj Singh
               </NavLink>
@@ -46,7 +48,8 @@ export default function Navbar() {
               variant="h6"
               noWrap
               component="div"
-              sx={{ display: { xs: "block", sm: "none" } }}>
+              sx={{ display: { xs: "block", sm: "none" } }}
+            >
               <NavLink to="/" style={{ color: "#fff" }}>
                 Anuj Singh
               </NavLink>
@@ -63,7 +66,8 @@ export default function Navbar() {
                         to={links.path}
                         className={`navLinks ${
                           location === links.path && "active"
-                        } `}>
+                        } `}
+                      >
                         {links.pathname}
                       </NavLink>
                     );
@@ -73,7 +77,8 @@ export default function Navbar() {
                 size="medium"
                 aria-label="show 4 new mails"
                 color="inherit"
-                onClick={toggleTheme}>
+                onClick={toggleTheme}
+              >
                 {darkMode ? <BsFillSunFill /> : <BsMoon />}
               </IconButton>
             </Box>
@@ -82,7 +87,8 @@ export default function Navbar() {
                 size="medium"
                 aria-label="show 4 new mails"
                 onClick={handleOpen}
-                color="inherit">
+                color="inherit"
+              >
                 <GiHamburgerMenu />
               </IconButton>
             </Box>

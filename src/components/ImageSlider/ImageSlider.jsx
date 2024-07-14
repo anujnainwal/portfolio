@@ -1,7 +1,7 @@
 import React, { useState } from "react";
-import { Box, Button, Modal } from "@mui/material";
-
-import "./assets/css/imageSlider.css"; // Import your custom CSS file
+import { Box, Button, Modal, Typography } from "@mui/material";
+import { FaArrowLeft, FaArrowRight } from "react-icons/fa";
+import "./assets/css/imageSlider.css";
 
 const ImageSlider = ({ images }) => {
   const [open, setOpen] = useState(false);
@@ -37,41 +37,68 @@ const ImageSlider = ({ images }) => {
         onClose={handleClose}
         aria-labelledby="image-slider-modal"
         aria-describedby="image-slider-modal-description"
-        BackdropProps={{ invisible: false }} // Ensure backdrop is not invisible
       >
         <div className="image-slider-container">
-          <img
-            src={images[currentImageIndex]}
-            alt="Slider"
-            className="image-slider-image"
-            width="60%"
-          />
-          <Box sx={{ display: "flex" }}>
+          <Typography variant="h6" sx={{ textAlign: "center", mb: 2 }}>
+            Image Slider
+          </Typography>
+          <div className="image-slider-wrapper">
             <Button
               onClick={previousImage}
               variant="contained"
-              className="previousBTN"
-              sx={{ margin: "0 10px" }}
-              size="small">
-              Previous
+              className="arrowButton"
+              sx={{
+                position: "absolute",
+                left: 10,
+                top: "50%",
+                transform: "translateY(-50%)",
+              }}
+            >
+              <FaArrowLeft />
             </Button>
-
+            <img
+              src={images[currentImageIndex]}
+              alt={`Slide ${currentImageIndex + 1}`}
+              className="image-slider-image"
+              style={{
+                maxWidth: "100%",
+                maxHeight: "70vh",
+                transition: "opacity 0.5s",
+              }}
+            />
             <Button
               onClick={nextImage}
               variant="contained"
-              className="nextBTN"
-              size="small"
-              sx={{ margin: "0 10px 0px 0px" }}>
-              Next
+              className="arrowButton"
+              sx={{
+                position: "absolute",
+                right: 10,
+                top: "50%",
+                transform: "translateY(-50%)",
+              }}
+            >
+              <FaArrowRight />
             </Button>
+          </div>
+          <Box sx={{ display: "flex", justifyContent: "center", mt: 2 }}>
             <Button
               onClick={handleClose}
               variant="contained"
-              className="nextBTN"
+              className="closeBTN"
               size="small"
-              sx={{ background: "red" }}>
+              sx={{ margin: "0 10px", background: "red" }}
+            >
               Close
             </Button>
+          </Box>
+          <Box sx={{ display: "flex", justifyContent: "center", mt: 2 }}>
+            {images.map((_, index) => (
+              <div
+                key={index}
+                onClick={() => setCurrentImageIndex(index)}
+                className={`dot ${currentImageIndex === index ? "active" : ""}`}
+              />
+            ))}
           </Box>
         </div>
       </Modal>

@@ -45,13 +45,14 @@ const Landing = () => {
       sx={{
         background: "#050a0eea",
         display: "flex",
-        height: "90dvh",
+        height: "100dvh",
         alignItems: "center",
         flexDirection: "column",
         justifyContent: "center",
         padding: "20px", // Add some padding for spacing
         textAlign: "center",
-      }}>
+      }}
+    >
       <Typography variant="h3" color="#fff">
         Anuj Singh Nainwal
       </Typography>
@@ -65,7 +66,7 @@ const Landing = () => {
               }}
               onInit={(typewriter) => {
                 typewriter
-                  .typeString(" MERN Stack Developer")
+                  .typeString("Backend Developer")
                   .callFunction(() => {
                     console.log("String typed out!");
                   })
@@ -83,7 +84,8 @@ const Landing = () => {
       </Box>
       <Box
         component="div"
-        sx={{ padding: "30px 0px", display: "flex", gap: "20px" }}>
+        sx={{ padding: "30px 0px", display: "flex", gap: "20px" }}
+      >
         {socialLinks.length > 0 &&
           socialLinks.map((links) => {
             return (
@@ -92,7 +94,8 @@ const Landing = () => {
                 key={links.id}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="icons_links">
+                className="icons_links"
+              >
                 {links.icon}
               </NavLink>
             );

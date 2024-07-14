@@ -1,16 +1,16 @@
-.experienceSection{
-    background: #050a0eea;
-    padding: 2rem 0;
-    height: fit-content;
-    text-align: center;
-    min-height: 100vh;
+.experienceSection {
+  background: #050a0eea;
+  padding: 2rem 0;
+  height: fit-content;
+  text-align: center;
+  min-height: 100vh;
 }
 
-.experienceList li{
-    list-style: circle;
-    padding: 5px;
-    margin: 0 10px;
-    color: #ececec;
-    font-size: 18px;
-    text-wrap: wrap;
+.experienceList li {
+  list-style: circle;
+  /* padding: 5px; */
+  margin: 0 10px;
+  color: #ececec;
+  font-size: 18px;
+  text-wrap: wrap;
 }

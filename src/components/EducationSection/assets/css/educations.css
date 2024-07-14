@@ -1,9 +1,9 @@
-.educationSection{
-    height: fit-content;
-    min-height: 90vh;
-    background: #050a0eea;
-    display: flex;
-    flex-direction: column; 
-    align-items: center; 
-    padding: 20px
+.educationSection {
+  height: fit-content;
+  min-height: 90vh;
+  background: #050a0eea;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px;
 }

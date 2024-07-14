@@ -14,25 +14,29 @@ const ProjectCard = ({
 }) => {
   return (
     <Grid item xs={12} sm={6} md={4} lg={3}>
-      <Card className={`card`} sx={{ margin: "10px 20px" }}>
-        <CardContent>
+      <Card
+        className={`card`}
+        sx={{ margin: "10px 20px", transition: "transform 0.2s" }}
+      >
+        <CardContent sx={{ padding: "16px" }}>
           <Box
             display="flex"
             flexDirection="column"
-            alignItems="center" // Center horizontally
-            justifyContent="center" // Center vertically
-            minHeight="100%" // Ensures content takes full height
+            alignItems="center"
+            justifyContent="center"
+            minHeight="100%"
           >
             <img src={imageUrl} alt={title} />
-            <Typography variant="h5" gutterBottom>
+            <Typography variant="h5" gutterBottom sx={{ fontWeight: "bold" }}>
               {title}
             </Typography>
+
             <Typography variant="body2" color="textSecondary">
               {description}
             </Typography>
           </Box>
         </CardContent>
-        <CardContent className={`cardContent footer`}>
+        <CardContent className={`cardContent footer`} sx={{ padding: "16px" }}>
           <Typography variant="body2">
             <div style={{ display: "flex", alignItems: "center" }}>
               <ImageSlider images={images} />
@@ -41,7 +45,8 @@ const ProjectCard = ({
                 target="_blank"
                 rel="noopener noreferrer"
                 className="imageButton"
-                color="inherit">
+                color="inherit"
+              >
                 Live
               </Link>
               <Link
@@ -49,7 +54,8 @@ const ProjectCard = ({
                 target="_blank"
                 rel="noopener noreferrer"
                 className="imageButton"
-                color="inherit">
+                color="inherit"
+              >
                 GitHub
               </Link>
             </div>

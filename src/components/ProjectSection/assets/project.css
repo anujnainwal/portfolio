@@ -48,9 +48,9 @@
 }
 
 .card img {
-  max-width: 100%;
-  height: auto;
-  margin-bottom: 15px;
+  width: 100%;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
 
 .card h5 {
@@ -64,12 +64,12 @@
 
 .card a {
   text-decoration: none;
-  color: #2196F3;
+  color: #2196f3;
   transition: color 0.3s;
 }
 
 .card a:hover {
-  color: #1976D2;
+  color: #1976d2;
 }
 
 .card .footer a {
@@ -78,6 +78,12 @@
   transition: color 0.3s;
 
   margin: 0 10px;
+}
+
+.card:hover {
+  transform: scale(1.02);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+  transition: transform 0.2s, box-shadow 0.2s;
 }
 
 .card .footer a:hover {

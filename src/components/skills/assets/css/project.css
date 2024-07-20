@@ -1,13 +1,13 @@
 /* project.css */
 
-.skillSection{
+.skillSection {
   height: fit-content;
   background: #050a0eea;
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
   padding: 2;
-  min-height: 90vh;
+  min-height: 100vh;
 }
 
 .skill_box {

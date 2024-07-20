@@ -36,7 +36,7 @@ const ProjectSection = () => {
   ];
 
   return (
-    <Box className="projectSection" sx={{ padding: 4 }}>
+    <Box className="projectSection" sx={{ padding: 4, height: "100vh" }}>
       <Typography variant="h4" gutterBottom align="center">
         My Projects
       </Typography>

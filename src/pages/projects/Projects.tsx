@@ -183,7 +183,6 @@ const ImageComponent = ({ src, alt, ...props }: ImageComponentProps) => {
 const ProjectsPage = () => {
   const [currentPage, setCurrentPage] = useState(1);
   const [filter, setFilter] = useState("All");
-  const [selectedId, setSelectedId] = useState(null);
   const projectsPerPage = 6;
 
   const categories = ["All", "Full Stack", "Frontend", "Web App"];
@@ -194,11 +193,6 @@ const ProjectsPage = () => {
       : projects.filter((project) => project.category === filter);
 
   const indexOfLastProject = currentPage * projectsPerPage;
-  const indexOfFirstProject = indexOfLastProject - projectsPerPage;
-  //   const currentProjects = filteredProjects.slice(
-  //     indexOfFirstProject,
-  //     indexOfLastProject
-  //   );
 
   const currentProjects = filteredProjects.slice(
     (currentPage - 1) * projectsPerPage,

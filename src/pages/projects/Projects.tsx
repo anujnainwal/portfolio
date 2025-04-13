@@ -192,8 +192,6 @@ const ProjectsPage = () => {
       ? projects
       : projects.filter((project) => project.category === filter);
 
-  const indexOfLastProject = currentPage * projectsPerPage;
-
   const currentProjects = filteredProjects.slice(
     (currentPage - 1) * projectsPerPage,
     currentPage * projectsPerPage

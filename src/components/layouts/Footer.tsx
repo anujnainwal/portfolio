@@ -1,13 +1,7 @@
 "use client";
 import React from "react";
 import Link from "next/link";
-import {
-  FaTwitter,
-  FaFacebook,
-  FaLinkedin,
-  FaYoutube,
-  FaGithub,
-} from "react-icons/fa";
+import { FaLinkedin, FaGithub } from "react-icons/fa";
 
 const Footer = () => {
   // return (

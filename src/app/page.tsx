@@ -170,12 +170,12 @@ const services = [
   },
 ];
 
-const stats = [
-  { value: "100+", label: "Projects Completed" },
-  { value: "50+", label: "Happy Clients" },
-  { value: "5+", label: "Years Experience" },
-  { value: "24/7", label: "Support" },
-];
+// const stats = [
+//   { value: "100+", label: "Projects Completed" },
+//   { value: "50+", label: "Happy Clients" },
+//   { value: "5+", label: "Years Experience" },
+//   { value: "24/7", label: "Support" },
+// ];
 const projects = [
   {
     title: "E-commerce Platform",

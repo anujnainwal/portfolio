@@ -1,9 +1,0 @@
-.resumeBox{
-
- height: auto;
-    min-height: 100vh;
-}
- .buttonDownloadingResunme:disabled{
-    background: "red" !important;
-    color: aqua;
-}

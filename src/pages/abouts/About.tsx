@@ -3,7 +3,6 @@ import React from "react";
 import { motion } from "framer-motion";
 import Image from "next/image";
 import { FaGithub, FaLinkedin, FaTwitter, FaDownload } from "react-icons/fa";
-import ScrollToTop from "@/components/common/ScrollToTop";
 
 const About = () => {
   return (
@@ -86,7 +85,7 @@ const About = () => {
       >
         <h2 className="text-3xl font-bold mb-8 text-center">My Skills</h2>
         <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
-          {skills.map((skill, index) => (
+          {skills.map((skill) => (
             <motion.div
               key={skill.name}
               whileHover={{ scale: 1.05 }}

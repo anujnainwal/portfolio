@@ -11,7 +11,6 @@ import {
   SiTailwindcss,
   SiPrisma,
   SiPostgresql,
-  SiJavascript,
   SiHtml5,
   SiCss3,
   SiRedux,

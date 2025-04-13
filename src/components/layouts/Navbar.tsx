@@ -4,8 +4,8 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 
 const Navbar = () => {
-  const [isOpen, setIsOpen] = useState<Boolean>(false);
-  let pathname = usePathname();
+  const [isOpen, setIsOpen] = useState<boolean>(false);
+  const pathname = usePathname();
 
   return (
     <nav className="fixed w-full top-[0] z-[50] backdrop-blur-md shadow-sm">

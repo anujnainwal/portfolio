@@ -110,10 +110,11 @@ export async function POST(req: Request) {
     await transporter.sendMail(mailData);
 
     return NextResponse.json(
-      { statusCode: 200, message: "Email sent successfully",data:null },
+      { statusCode: 200, message: "Email sent successfully", data: null },
       { status: 200 }
     );
   } catch (error) {
+    console.error("Error sending email:", error);
     return NextResponse.json(
       { message: "Failed to send email" },
       { status: 500 }

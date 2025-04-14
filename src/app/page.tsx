@@ -139,7 +139,7 @@ const Home = () => {
           </p>
         </div>
         <div className="grid md:grid-cols-2 gap-8 mb-12">
-          {projects.slice(0, 4).map((project: any, index) => (
+          {projects.slice(0, 4).map((project, index) => (
             <div
               key={index}
               className="bg-white rounded-xl shadow-sm hover:shadow-lg transition-all group"
@@ -164,7 +164,7 @@ const Home = () => {
                 <h3 className="text-xl font-semibold mb-2">{project.title}</h3>
                 <p className="text-gray-600 mb-4">{project.description}</p>
                 <div className="flex gap-2">
-                  {project.technologies.map((tech: any, i: number) => (
+                  {project.technologies.map((tech, i) => (
                     <span
                       key={i}
                       className="px-3 py-1 bg-blue-50 text-blue-600 rounded-full text-sm"
@@ -375,7 +375,14 @@ const services = [
 //   { value: "5+", label: "Years Experience" },
 //   { value: "24/7", label: "Support" },
 // ];
-const projects = [
+
+interface Project {
+  title: string;
+  description: string;
+  image?: string; // Optional image property
+  technologies: string[];
+}
+const projects: Project[] = [
   {
     title: "E-commerce Platform",
     description:

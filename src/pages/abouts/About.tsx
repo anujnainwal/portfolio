@@ -1,10 +1,11 @@
 "use client";
-import React from "react";
+import React, { useState } from "react";
 import { motion } from "framer-motion";
 import Image from "next/image";
 import { FaGithub, FaLinkedin, FaTwitter, FaDownload } from "react-icons/fa";
-
+import PersonalImage from "../../../public/images/anuj.jpg";
 const About = () => {
+  const [imageLoading, setImageLoading] = useState(true);
   return (
     <div className="py-20 px-4 max-w-7xl mx-auto">
       {/* Hero Section */}
@@ -52,13 +53,17 @@ const About = () => {
               <FaTwitter />
             </motion.a>
           </div>
-          <motion.button
+          <motion.a
+            href="https://drive.google.com/uc?export=download&id=1FzWh_4GgDEvPHDhySY1yCLZBGNpZ3v7C"
+            download="Anuj_Singh_Resume.pdf"
+            target="_blank"
+            rel="noopener noreferrer"
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
-            className="flex items-center gap-2 px-6 py-3 bg-blue-600 text-white rounded-lg hover:bg-blue-700"
+            className="inline-flex items-center gap-2 px-6 py-3 bg-blue-600 text-white rounded-lg hover:bg-blue-700 w-fit"
           >
             <FaDownload /> Download Resume
-          </motion.button>
+          </motion.a>
         </motion.div>
 
         <motion.div
@@ -67,11 +72,16 @@ const About = () => {
           transition={{ delay: 0.4 }}
           className="relative h-[400px] rounded-2xl overflow-hidden"
         >
+          {" "}
+          {imageLoading && (
+            <div className="absolute inset-0 bg-gray-200 animate-pulse rounded-2xl" />
+          )}
           <Image
-            src="/your-photo.jpg"
-            alt="Profile"
+            src={PersonalImage}
+            alt="Developer"
             fill
-            className="object-cover"
+            className="object-cover rounded-2xl"
+            onLoadingComplete={() => setImageLoading(false)}
           />
         </motion.div>
       </motion.div>

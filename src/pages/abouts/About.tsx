@@ -22,16 +22,59 @@ const About = () => {
           <h1 className="text-4xl md:text-5xl font-bold mb-6">
             About <span className="text-blue-600">Me</span>
           </h1>
-          <p className="text-gray-600 text-lg mb-8">
-            A passionate Full Stack Developer with expertise in creating
-            innovative web solutions. I specialize in building scalable
-            applications using modern technologies.
-          </p>
+          <div className="space-y-6 text-lg">
+            <p className="leading-relaxed bg-gradient-to-r from-blue-50 to-transparent p-6 rounded-2xl">
+              <span className="text-2xl font-bold text-blue-600 block mb-2">
+                I'm Anuj Singh Nainwal
+              </span>
+              <span className="text-gray-700">
+                a Full Stack Developer with{" "}
+                <span className="font-semibold text-blue-600">3+ years</span> of
+                experience in the MERN stack.
+              </span>
+            </p>
+
+            <p className="leading-relaxed p-6 rounded-2xl border border-blue-100 shadow-sm hover:shadow-md transition-shadow">
+              I specialize in building{" "}
+              <span className="text-blue-600">
+                secure, scalable web applications
+              </span>
+              , developing <span className="text-blue-600">RESTful APIs</span>,
+              and integrating third-party services like{" "}
+              <span className="font-medium">Stripe</span> and{" "}
+              <span className="font-medium">Plaid</span>.
+            </p>
+
+            <p className="leading-relaxed p-6 bg-white rounded-2xl shadow-sm hover:shadow-md transition-shadow">
+              <span className="inline-flex items-center gap-2 mb-2">
+                <span className="text-blue-500 text-2xl">⚡</span>
+                <span className="font-semibold">Technical Expertise</span>
+              </span>
+              <br />
+              Creating responsive UIs with{" "}
+              <span className="font-medium">Material UI</span>,{" "}
+              <span className="font-medium">Ant Design</span>, and{" "}
+              <span className="font-medium">Tailwind CSS</span>. Strong
+              experience in data visualization using{" "}
+              <span className="font-medium">ApexCharts</span> and{" "}
+              <span className="font-medium">ArcGIS</span>.
+            </p>
+
+            <p className="leading-relaxed p-6 bg-blue-50 rounded-2xl text-blue-800">
+              <span className="font-semibold block mb-2">
+                💡 What drives me
+              </span>
+              Passionate about <span className="font-bold">clean code</span>,{" "}
+              <span className="font-bold">cloud deployment</span> (AWS, Vercel),
+              and delivering high-performance, user-friendly solutions.
+            </p>
+          </div>
           <div className="flex gap-4 mb-8">
             <motion.a
               whileHover={{ scale: 1.1 }}
               whileTap={{ scale: 0.9 }}
-              href="#"
+              href="https://www.linkedin.com/in/anuj-singh-nainwal/"
+              target="_blank"
               className="text-2xl text-gray-600 hover:text-blue-600"
             >
               <FaGithub />
@@ -39,7 +82,8 @@ const About = () => {
             <motion.a
               whileHover={{ scale: 1.1 }}
               whileTap={{ scale: 0.9 }}
-              href="#"
+              href="https://github.com/anujnainwal"
+              target="_blank"
               className="text-2xl text-gray-600 hover:text-blue-600"
             >
               <FaLinkedin />
@@ -128,11 +172,21 @@ const About = () => {
                   <h3 className="text-xl font-semibold">{exp.role}</h3>
                   <p className="text-gray-600">{exp.company}</p>
                 </div>
-                <span className="text-sm text-blue-600 bg-blue-50 px-3 py-1 rounded-full">
-                  {exp.period}
-                </span>
+                <div className="flex flex-col items-end gap-2">
+                  <div className="flex items-center gap-2">
+                    <span className="text-sm font-medium text-blue-600 bg-blue-50 px-4 py-1.5 rounded-full">
+                      {exp.period}
+                    </span>
+                  </div>
+                  <div className="flex items-center gap-1.5">
+                    <span className="text-gray-500">📍</span>
+                    <span className="text-sm text-gray-600">
+                      {exp.location}
+                    </span>
+                  </div>
+                </div>
               </div>
-              <p className="text-gray-600">{exp.description}</p>
+              <div className="mt-4">{exp.description}</div>
             </motion.div>
           ))}
         </div>
@@ -148,23 +202,51 @@ const skills = [
   { name: "MongoDB", level: "Intermediate", icon: "🍃" },
   // Add more skills
 ];
+interface Experience {
+  role: string;
+  company: string;
+  period: string;
+  location: string;
+  description: React.ReactNode;
+}
 
-const experience = [
+const experience: Experience[] = [
   {
-    role: "Senior Frontend Developer",
-    company: "Tech Corp",
-    period: "2021 - Present",
-    description:
-      "Led development of multiple web applications using React and TypeScript.",
+    role: "MERN Stack Developer",
+    company: "RapidSofts",
+    period: "January 2024 - Present",
+    location: "Mohali, Punjab",
+    description: (
+      <ul className="list-disc pl-4 space-y-2 text-gray-600">
+        <li>
+          Developed scalable web applications using Node.js, Express.js,
+          React.js, and MySQL
+        </li>
+        <li>
+          Integrated payment solutions with Stripe for recurring subscriptions
+        </li>
+        <li>Implemented bank linking functionality using Plaid API</li>
+        <li>Added geospatial features using ArcGIS</li>
+        <li>Built responsive UIs with Tailwind CSS</li>
+        <li>Implemented secure authentication using JWT</li>
+      </ul>
+    ),
   },
   {
-    role: "Full Stack Developer",
-    company: "Digital Solutions",
-    period: "2019 - 2021",
-    description:
-      "Developed and maintained various web applications using MERN stack.",
+    role: "Associate Software Developer",
+    company: "Detroit Software Consultants India Pvt. Ltd.",
+    location: "Gurugram, India",
+    period: "June 2022 - November 2023",
+    description: (
+      <ul className="list-disc pl-4 space-y-2 text-gray-600">
+        <li>Enhanced web applications using React.js and JavaScript</li>
+        <li>Designed and implemented chatbot workflows</li>
+        <li>Optimized application performance</li>
+        <li>Implemented Firebase push notifications</li>
+        <li>Created interactive data visualizations using ApexCharts</li>
+      </ul>
+    ),
   },
-  // Add more experience
 ];
 
 export default About;

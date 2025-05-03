@@ -138,53 +138,66 @@ const Home = () => {
             Some of my recent work in web development and design
           </p>
         </div>
-        <div className="grid md:grid-cols-2 gap-8 mb-12">
-          {projects.slice(0, 4).map((project, index) => (
-            <div
-              key={index}
-              className="bg-white rounded-xl shadow-sm hover:shadow-lg transition-all group"
-            >
-              <div className="relative h-[200px] rounded-t-xl overflow-hidden">
-                {projectImagesLoading[index] && (
-                  <div className="absolute inset-0 bg-gray-200 animate-pulse" />
-                )}
-                <Image
-                  src={project?.image || NoImageAvailable}
-                  alt={project.title}
-                  fill
-                  className="object-cover group-hover:scale-110 transition-transform duration-300"
-                  onLoadingComplete={() => {
-                    const newLoadingState = [...projectImagesLoading];
-                    newLoadingState[index] = false;
-                    setProjectImagesLoading(newLoadingState);
-                  }}
-                />
-              </div>
-              <div className="p-6">
-                <h3 className="text-xl font-semibold mb-2">{project.title}</h3>
-                <p className="text-gray-600 mb-4">{project.description}</p>
-                <div className="flex gap-2">
-                  {project.technologies.map((tech, i) => (
-                    <span
-                      key={i}
-                      className="px-3 py-1 bg-blue-50 text-blue-600 rounded-full text-sm"
-                    >
-                      {tech}
-                    </span>
-                  ))}
+        <div className="grid md:grid-cols-2 gap-8 mb-5">
+          {projects.length > 0 ? (
+            projects.slice(0, 4).map((project, index) => (
+              <div
+                key={index}
+                className="bg-white rounded-xl shadow-sm hover:shadow-xl transition-all duration-300 group overflow-hidden border border-gray-100"
+              >
+                <div className="relative h-[250px] rounded-t-xl overflow-hidden">
+                  {projectImagesLoading[index] && (
+                    <div className="absolute inset-0 bg-gray-200 animate-pulse" />
+                  )}
+                  <Image
+                    src={project?.image || NoImageAvailable}
+                    alt={project.title}
+                    fill
+                    className="object-cover group-hover:scale-105 transition-transform duration-500"
+                    onLoadingComplete={() => {
+                      const newLoadingState = [...projectImagesLoading];
+                      newLoadingState[index] = false;
+                      setProjectImagesLoading(newLoadingState);
+                    }}
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                </div>
+                <div className="p-8">
+                  <h3 className="text-2xl font-bold mb-3 group-hover:text-blue-600 transition-colors">
+                    {project.title}
+                  </h3>
+                  <p className="text-gray-600 mb-6 line-clamp-2">
+                    {project.description}
+                  </p>
+                  <div className="flex flex-wrap gap-2">
+                    {project.technologies.map((tech, i) => (
+                      <span
+                        key={i}
+                        className="px-4 py-1.5 bg-blue-50 text-blue-600 rounded-full text-sm font-medium hover:bg-blue-100 transition-colors"
+                      >
+                        {tech}
+                      </span>
+                    ))}
+                  </div>
                 </div>
               </div>
+            ))
+          ) : (
+            <div className="col-span-2 text-center py-5 ">
+              <p className="text-gray-600">No Projects Found</p>
             </div>
-          ))}
+          )}
         </div>
-        <div className="text-center">
-          <Link
-            href="/projects"
-            className="px-6 py-3 bg-blue-600 text-white rounded-md hover:bg-blue-700 transition-all inline-block"
-          >
-            View All Projects
-          </Link>
-        </div>
+        {projects.length !== 0 && (
+          <div className="text-center">
+            <Link
+              href="/projects"
+              className="px-6 py-3 bg-blue-600 text-white rounded-md hover:bg-blue-700 transition-all inline-block"
+            >
+              View All Projects
+            </Link>
+          </div>
+        )}
       </section>
 
       {/* Stats Section */}
@@ -383,32 +396,32 @@ interface Project {
   technologies: string[];
 }
 const projects: Project[] = [
-  {
-    title: "E-commerce Platform",
-    description:
-      "A full-stack e-commerce solution with modern features and secure payment integration.",
-    // image: "/images/projects/ecommerce.jpg",
-    technologies: ["React", "Node.js", "MongoDB"],
-  },
-  {
-    title: "Task Management App",
-    description:
-      "A collaborative task management tool with real-time updates and team features.",
-    // image: "/images/projects/taskapp.jpg",
-    technologies: ["Next.js", "TypeScript", "Prisma"],
-  },
-  {
-    title: "Portfolio Website",
-    description:
-      "A modern portfolio website with smooth animations and responsive design.",
-    // image: "/images/projects/portfolio.jpg",
-    technologies: ["React", "Tailwind", "Framer"],
-  },
-  {
-    title: "Blog Platform",
-    description: "A feature-rich blogging platform with CMS integration.",
-    // image: "/images/projects/blog.jpg",
-    technologies: ["Next.js", "MongoDB", "AWS"],
-  },
+  // {
+  //   title: "E-commerce Platform",
+  //   description:
+  //     "A full-stack e-commerce solution with modern features and secure payment integration.",
+  //   // image: "/images/projects/ecommerce.jpg",
+  //   technologies: ["React", "Node.js", "MongoDB"],
+  // },
+  // {
+  //   title: "Task Management App",
+  //   description:
+  //     "A collaborative task management tool with real-time updates and team features.",
+  //   // image: "/images/projects/taskapp.jpg",
+  //   technologies: ["Next.js", "TypeScript", "Prisma"],
+  // },
+  // {
+  //   title: "Portfolio Website",
+  //   description:
+  //     "A modern portfolio website with smooth animations and responsive design.",
+  //   // image: "/images/projects/portfolio.jpg",
+  //   technologies: ["React", "Tailwind", "Framer"],
+  // },
+  // {
+  //   title: "Blog Platform",
+  //   description: "A feature-rich blogging platform with CMS integration.",
+  //   // image: "/images/projects/blog.jpg",
+  //   technologies: ["Next.js", "MongoDB", "AWS"],
+  // },
 ];
 export default Home;

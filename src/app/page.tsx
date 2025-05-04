@@ -9,6 +9,7 @@ import Link from "next/link";
 import { useContact } from "@/hooks/useContactForm";
 import { MdEmail } from "react-icons/md";
 import Modal from "@/components/common/Modal";
+import { getKihaanEnterprisesImage } from "@/comman/comman";
 
 const Home = () => {
   const [imageLoading, setImageLoading] = useState(true);
@@ -143,9 +144,9 @@ const Home = () => {
             projects.slice(0, 4).map((project, index) => (
               <div
                 key={index}
-                className="bg-white rounded-xl shadow-sm hover:shadow-xl transition-all duration-300 group overflow-hidden border border-gray-100"
+                className="bg-white rounded-2xl shadow-lg hover:shadow-2xl transform hover:-translate-y-1 transition-all duration-300 group overflow-hidden border border-gray-100"
               >
-                <div className="relative h-[250px] rounded-t-xl overflow-hidden">
+                <div className="relative h-[250px] rounded-t-2xl overflow-hidden">
                   {projectImagesLoading[index] && (
                     <div className="absolute inset-0 bg-gray-200 animate-pulse" />
                   )}
@@ -153,38 +154,64 @@ const Home = () => {
                     src={project?.image || NoImageAvailable}
                     alt={project.title}
                     fill
-                    className="object-cover group-hover:scale-105 transition-transform duration-500"
+                    sizes="(max-width: 768px) 100vw, 50vw"
+                    quality={100}
+                    priority={index < 2}
+                    className="object-cover object-top w-full h-full scale-125 transition-all duration-[1.5s] ease-in-out group-hover:translate-y-[-20%] animate-fastScroll"
                     onLoadingComplete={() => {
                       const newLoadingState = [...projectImagesLoading];
                       newLoadingState[index] = false;
                       setProjectImagesLoading(newLoadingState);
                     }}
                   />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/30 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
                 </div>
                 <div className="p-8">
-                  <h3 className="text-2xl font-bold mb-3 group-hover:text-blue-600 transition-colors">
+                  <h3 className="text-2xl font-bold mb-4 group-hover:text-blue-600 transition-colors">
                     {project.title}
                   </h3>
-                  <p className="text-gray-600 mb-6 line-clamp-2">
+                  <p className="text-gray-600 mb-6 line-clamp-2 leading-relaxed">
                     {project.description}
                   </p>
-                  <div className="flex flex-wrap gap-2">
+                  <div className="flex flex-wrap gap-2 mb-6">
                     {project.technologies.map((tech, i) => (
                       <span
                         key={i}
-                        className="px-4 py-1.5 bg-blue-50 text-blue-600 rounded-full text-sm font-medium hover:bg-blue-100 transition-colors"
+                        className="px-4 py-2 bg-blue-50/50 text-blue-600 rounded-full text-sm font-medium hover:bg-blue-100 transition-colors"
                       >
                         {tech}
                       </span>
                     ))}
                   </div>
+                  <div className="flex items-center gap-4 pt-6 border-t border-gray-100">
+                    {project.live && (
+                      <a
+                        href={project.live}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="flex-1 text-center px-6 py-3 bg-blue-600 text-white rounded-xl text-sm font-medium hover:bg-blue-700 transition-colors"
+                      >
+                        Live Demo
+                      </a>
+                    )}
+                    <a
+                      href={project.github}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className={`flex items-center justify-center gap-2 ${
+                        project.live ? "flex-1" : "w-full"
+                      } px-6 py-3 border border-gray-200 rounded-xl text-sm font-medium hover:bg-gray-50 transition-colors`}
+                    >
+                      <FaGithub className="w-4 h-4" />
+                      View Code
+                    </a>
+                  </div>
                 </div>
               </div>
             ))
           ) : (
-            <div className="col-span-2 text-center py-5 ">
-              <p className="text-gray-600">No Projects Found</p>
+            <div className="col-span-2 text-center py-12 bg-gray-50 rounded-2xl">
+              <p className="text-gray-600 font-medium">No Projects Found</p>
             </div>
           )}
         </div>
@@ -392,17 +419,28 @@ const services = [
 interface Project {
   title: string;
   description: string;
-  image?: string; // Optional image property
+  image?: any;
   technologies: string[];
+  github: string;
+  live?: string;
 }
 const projects: Project[] = [
-  // {
-  //   title: "E-commerce Platform",
-  //   description:
-  //     "A full-stack e-commerce solution with modern features and secure payment integration.",
-  //   // image: "/images/projects/ecommerce.jpg",
-  //   technologies: ["React", "Node.js", "MongoDB"],
-  // },
+  {
+    title: "Kihaan Enterprises",
+    description:
+      "Kihaan Enterprises is a full-service electrical contractor based in Dehradun, Uttarakhand, offering comprehensive solutions across residential, commercial, and industrial sectors. With a focus on reliability, safety, and customer satisfaction, they provide everything from electrical design and installation to CCTV and air-conditioning services, backed by a 100% satisfaction guarantee.",
+    image: getKihaanEnterprisesImage.previewUrl,
+    technologies: [
+      "Html",
+      "Css",
+      "TailwindCss",
+      "Node.js",
+      "Express.js",
+      "Mongodb",
+    ],
+    github: "#!",
+    live: "https://www.kihaanenterprises.com/",
+  },
   // {
   //   title: "Task Management App",
   //   description:

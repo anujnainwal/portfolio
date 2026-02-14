@@ -1,25 +1,12 @@
 "use client";
-import React, { FormEvent, useState } from "react";
+import React, { useState } from "react";
 import Image from "next/image";
 import { FaGithub, FaLinkedin, FaTwitter } from "react-icons/fa";
 import PersonalImage from "../../public/images/anuj.jpg";
-import NoImageAvailable from "../../public/images/no-available-image.jpeg";
 import Link from "next/link";
-import { useContact } from "@/hooks/useContactForm";
 import { MdEmail } from "react-icons/md";
-// import Modal from "@/components/common/Modal"; // Replaced with Shadcn Dialog
-import { getKihaanEnterprisesImage } from "@/common/images"; // Updated import path
 import { Button } from "@/components/ui/button";
-import {
-  Card,
-  CardContent,
-  CardHeader,
-  CardTitle,
-  CardDescription,
-} from "@/components/ui/card";
 import ContactForm from "@/components/forms/ContactForm";
-import { Input } from "@/components/ui/input";
-import { Textarea } from "@/components/ui/textarea";
 import {
   Dialog,
   DialogContent,
@@ -27,71 +14,101 @@ import {
   DialogTitle,
   DialogTrigger,
 } from "@/components/ui/dialog";
-import { Label } from "@/components/ui/label";
 import Magnetic from "@/components/ui/magnetic";
-import gsap from "gsap";
-import { useGSAP } from "@gsap/react";
-import ProjectStack from "@/components/projects/project-stack";
-import BentoGrid from "@/components/services/bento-grid";
+import { motion } from "framer-motion";
+import dynamic from "next/dynamic";
+import { SHOW_TESTIMONIALS } from "@/data/testimonials";
+
+// Lazy load heavy interactive components
+const ProjectStack = dynamic(
+  () => import("@/components/projects/project-stack"),
+  {
+    loading: () => <div className="h-screen bg-transparent" />,
+    ssr: false,
+  },
+);
+const BentoGrid = dynamic(() => import("@/components/services/bento-grid"), {
+  loading: () => <div className="h-[50vh] bg-transparent" />,
+});
+const Testimonials = dynamic(
+  () => import("@/components/sections/Testimonials"),
+  {
+    loading: () => <div className="h-[40vh] bg-transparent" />,
+  },
+);
+const ContactFormLoader = dynamic(
+  () => import("@/components/forms/ContactForm"),
+  {
+    loading: () => (
+      <div className="h-[300px] flex items-center justify-center">
+        Loading form...
+      </div>
+    ),
+  },
+);
 
 const Home = () => {
-  const container = React.useRef(null);
-
-  useGSAP(
-    () => {
-      const tl = gsap.timeline({ defaults: { ease: "power4.out" } });
-
-      tl.from(".hero-text-reveal", {
-        y: 100,
-        opacity: 0,
-        duration: 1,
-        stagger: 0.2,
-        skewY: 7,
-      }).from(
-        ".hero-image-reveal",
-        {
-          scale: 0.8,
-          opacity: 0,
-          duration: 1.5,
-          ease: "power3.out",
-        },
-        "-=1",
-      );
-    },
-    { scope: container },
-  );
-
   const [imageLoading, setImageLoading] = useState(true);
   const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
 
+  // Animation variants
+  const containerVariants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.2,
+      },
+    },
+  };
+
+  const itemVariants = {
+    hidden: { y: 20, opacity: 0 },
+    visible: {
+      y: 0,
+      opacity: 1,
+      transition: {
+        duration: 0.8,
+        ease: "easeInOut",
+      },
+    },
+  };
+
   return (
     <>
-      <div ref={container}>
+      <div>
         {/* Hero Section */}
         <section className="py-20 min-h-[90vh] flex items-center">
           <div className="grid md:grid-cols-2 gap-8 items-center">
-            <div className="overflow-hidden">
-              <h1 className="text-4xl md:text-5xl font-bold mb-6 leading-tight">
-                <div className="overflow-hidden">
-                  <span className="hero-text-reveal inline-block">
-                    Full Stack Engineer
-                  </span>
-                </div>
-                <div className="overflow-hidden">
-                  <span className="hero-text-reveal inline-block text-blue-600">
-                    Building Scalable Web Platforms
-                  </span>
-                </div>
-              </h1>
-              <div className="overflow-hidden mb-8">
-                <p className="hero-text-reveal text-gray-600 text-lg">
+            <motion.div
+              className="overflow-hidden"
+              initial="hidden"
+              animate="visible"
+              variants={containerVariants}
+            >
+              <motion.h1
+                variants={itemVariants}
+                className="text-4xl md:text-5xl font-bold mb-6 leading-tight"
+              >
+                <span className="block">Full Stack Engineer</span>
+                <span className="block text-blue-600">
+                  Building Scalable Web Platforms
+                </span>
+              </motion.h1>
+
+              <motion.div
+                variants={itemVariants}
+                className="overflow-hidden mb-8"
+              >
+                <p className="text-gray-600 text-lg">
                   Specialized in high-performance Next.js applications that
                   drive business growth. Converting complex requirements into
                   seamless digital experiences.
                 </p>
-              </div>
-              <div className="hero-text-reveal flex gap-4">
-                <Link href="/projects">
+              </motion.div>
+
+              <motion.div variants={itemVariants} className="flex gap-4">
+                <Link href="/projects" aria-label="View Projects">
                   <Magnetic>
                     <Button
                       size="lg"
@@ -126,6 +143,7 @@ const Home = () => {
                             href="https://www.linkedin.com/in/anuj-singh-nainwal/"
                             target="_blank"
                             rel="noopener noreferrer"
+                            aria-label="Connect on LinkedIn"
                             className="flex items-center gap-2 text-gray-600 hover:text-blue-600 transition-colors"
                           >
                             <FaLinkedin className="w-5 h-5" />
@@ -133,6 +151,7 @@ const Home = () => {
                           </a>
                           <a
                             href="mailto:anujsinghnainwal@gmail.com"
+                            aria-label="Send email to anujsinghnainwal@gmail.com"
                             className="flex items-center gap-2 text-gray-600 hover:text-blue-600 transition-colors"
                           >
                             <MdEmail className="w-5 h-5" />
@@ -141,19 +160,21 @@ const Home = () => {
                         </div>
                       </div>
 
-                      <ContactForm
+                      <ContactFormLoader
                         onSuccess={() => setIsModalOpen(false)}
                         onCancel={() => setIsModalOpen(false)}
                       />
                     </div>
                   </DialogContent>
                 </Dialog>
-              </div>
-              <div className="hero-text-reveal flex gap-4 mt-8">
+              </motion.div>
+
+              <motion.div variants={itemVariants} className="flex gap-4 mt-8">
                 <Link
                   href="https://github.com/anujnainwal"
                   target="_blank"
                   rel="noopener noreferrer"
+                  aria-label="Visit GitHub Profile"
                 >
                   <FaGithub className="w-6 h-6 text-gray-600 hover:text-blue-600 cursor-pointer hover:scale-110 transition-transform" />
                 </Link>
@@ -161,24 +182,33 @@ const Home = () => {
                   href="https://www.linkedin.com/in/anuj-singh-nainwal/"
                   target="_blank"
                   rel="noopener noreferrer"
+                  aria-label="Visit LinkedIn Profile"
                 >
                   <FaLinkedin className="w-6 h-6 text-gray-600 hover:text-blue-600 cursor-pointer hover:scale-110 transition-transform" />
                 </Link>
-                <Link href="#!" target="_blank" rel="noopener noreferrer">
+                <Link
+                  href="#!"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label="Visit Twitter Profile"
+                >
                   <FaTwitter className="w-6 h-6 text-gray-600 hover:text-blue-600 cursor-pointer hover:scale-110 transition-transform" />
                 </Link>
-              </div>
-            </div>
-            <div className="hero-image-reveal relative h-[400px] md:h-[600px] w-full">
+              </motion.div>
+            </motion.div>
+
+            <div className="relative h-[400px] md:h-[600px] w-full">
               {imageLoading && (
                 <div className="absolute inset-0 bg-gray-200 animate-pulse rounded-2xl" />
               )}
               <Image
                 src={PersonalImage}
-                alt="Developer"
+                alt="Developer Anuj Singh"
                 fill
+                priority
+                sizes="(max-width: 768px) 100vw, 50vw"
                 className="object-cover rounded-2xl grayscale hover:grayscale-0 transition-all duration-700"
-                onLoadingComplete={() => setImageLoading(false)}
+                onLoad={() => setImageLoading(false)}
               />
             </div>
           </div>
@@ -196,17 +226,13 @@ const Home = () => {
         <BentoGrid />
       </section>
 
+      {/* Client Reviews Section */}
+      {SHOW_TESTIMONIALS && <Testimonials />}
+
       {/* Projects Stack Section */}
       <ProjectStack />
     </>
   );
 };
-
-// const stats = [
-//   { value: "100+", label: "Projects Completed" },
-//   { value: "50+", label: "Happy Clients" },
-//   { value: "5+", label: "Years Experience" },
-//   { value: "24/7", label: "Support" },
-// ];
 
 export default Home;

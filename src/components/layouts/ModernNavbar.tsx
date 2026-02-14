@@ -3,7 +3,7 @@ import React, { useState, useEffect } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { motion, AnimatePresence } from "framer-motion";
-import { HiMenuAlt4, HiX } from "react-icons/hi";
+import { Menu, X } from "lucide-react";
 import Magnetic from "@/components/ui/magnetic";
 import { Button } from "@/components/ui/button";
 
@@ -23,6 +23,10 @@ const ModernNavbar = () => {
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 50);
     };
+
+    // Check initial scroll position
+    handleScroll();
+
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
@@ -32,7 +36,7 @@ const ModernNavbar = () => {
   return (
     <>
       <motion.header
-        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
+        className={`fixed top-0 left-0 right-0 z-[100] transition-all duration-300 ${
           isScrolled ? "py-4" : "py-6"
         }`}
         initial={{ y: -100 }}
@@ -55,7 +59,10 @@ const ModernNavbar = () => {
             </Link>
 
             {/* Desktop Navigation */}
-            <nav className="hidden md:flex items-center gap-8">
+            <nav
+              className="hidden md:flex items-center gap-8"
+              aria-label="Main Navigation"
+            >
               {navLinks.map((link) => (
                 <Magnetic key={link.name}>
                   <Link
@@ -89,8 +96,11 @@ const ModernNavbar = () => {
             <button
               onClick={toggleMenu}
               className="md:hidden z-50 p-2 text-gray-600 hover:text-black transition-colors"
+              aria-label={isOpen ? "Close menu" : "Open menu"}
+              aria-expanded={isOpen}
+              aria-controls="mobile-menu"
             >
-              {isOpen ? <HiX size={24} /> : <HiMenuAlt4 size={24} />}
+              {isOpen ? <X size={24} /> : <Menu size={24} />}
             </button>
           </div>
         </div>
@@ -100,13 +110,17 @@ const ModernNavbar = () => {
       <AnimatePresence>
         {isOpen && (
           <motion.div
+            id="mobile-menu"
             initial={{ opacity: 0, y: "-100%" }}
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: "-100%" }}
             transition={{ duration: 0.5, ease: [0.76, 0, 0.24, 1] }}
             className="fixed inset-0 z-40 bg-white md:hidden flex flex-col items-center justify-center"
           >
-            <nav className="flex flex-col items-center gap-8">
+            <nav
+              className="flex flex-col items-center gap-8"
+              aria-label="Mobile Navigation"
+            >
               {navLinks.map((link) => (
                 <motion.div
                   key={link.name}

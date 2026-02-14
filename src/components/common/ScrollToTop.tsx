@@ -1,6 +1,6 @@
 import React from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { FaArrowUp } from "react-icons/fa";
+import { ArrowUp } from "lucide-react";
 import { useScrollToTop } from "@/hooks/useScrollToTop";
 
 interface ScrollToTopProps {
@@ -22,11 +22,12 @@ const ScrollToTop: React.FC<ScrollToTopProps> = ({
           animate={{ opacity: 1, scale: 1 }}
           exit={{ opacity: 0, scale: 0.5 }}
           onClick={scrollToTop}
-          className={`fixed bottom-8 right-8 p-4 rounded-full bg-blue-600 text-white shadow-lg hover:bg-blue-700 transition-colors ${className}`}
-          whileHover={{ scale: 1.1 }}
+          className={`fixed bottom-8 right-8 p-4 rounded-full bg-black/80 backdrop-blur-md text-white shadow-2xl border border-white/10 hover:bg-black transition-all z-50 group hover:scale-110 active:scale-95 ${className}`}
+          whileHover={{ y: -5 }}
           whileTap={{ scale: 0.9 }}
+          aria-label="Scroll to top"
         >
-          <FaArrowUp className="text-xl" />
+          <ArrowUp className="text-xl group-hover:animate-bounce" size={20} />
         </motion.button>
       )}
     </AnimatePresence>

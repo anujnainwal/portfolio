@@ -1,6 +1,6 @@
 "use client";
 import React, { useState } from "react";
-import { AnimatePresence, motion } from "framer-motion";
+import { AnimatePresence, motion, Variants } from "framer-motion";
 import Image from "next/image";
 import { FaGithub, FaExternalLinkAlt } from "react-icons/fa";
 import {
@@ -23,7 +23,7 @@ const containerVariants = {
   },
 };
 
-const cardVariants = {
+const cardVariants: Variants = {
   hidden: { y: 20, opacity: 0 },
   visible: {
     y: 0,
@@ -163,8 +163,10 @@ const projects = [
   },
 ];
 
-interface ImageComponentProps
-  extends Omit<React.ComponentProps<typeof Image>, "src" | "alt"> {
+interface ImageComponentProps extends Omit<
+  React.ComponentProps<typeof Image>,
+  "src" | "alt"
+> {
   src: string;
   alt: string;
 }
@@ -194,7 +196,7 @@ const ProjectsPage = () => {
 
   const currentProjects = filteredProjects.slice(
     (currentPage - 1) * projectsPerPage,
-    currentPage * projectsPerPage
+    currentPage * projectsPerPage,
   );
 
   return (

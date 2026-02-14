@@ -9,7 +9,7 @@ export async function POST(req: Request) {
     );
   }
   try {
-    const { name, email, subject, message } = await req.json();
+    const { name, email, subject, message, projectType, budget, timeline } = await req.json();
 
     const transporter = nodemailer.createTransport({
       service: "gmail",
@@ -92,6 +92,18 @@ export async function POST(req: Request) {
                 <div class="field">
                   <div class="label">Subject</div>
                   <div class="value">${subject}</div>
+                </div>
+                <div class="field">
+                  <div class="label">Project Type</div>
+                  <div class="value">${projectType || "Not specified"}</div>
+                </div>
+                <div class="field">
+                  <div class="label">Budget</div>
+                  <div class="value">${budget || "Not specified"}</div>
+                </div>
+                <div class="field">
+                  <div class="label">Timeline</div>
+                  <div class="value">${timeline || "Not specified"}</div>
                 </div>
                 <div class="field">
                   <div class="label">Message</div>

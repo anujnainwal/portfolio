@@ -6,12 +6,13 @@ import Modal from "../common/Modal";
 import { FaLinkedin } from "react-icons/fa";
 import { MdEmail } from "react-icons/md";
 import { useContact } from "@/hooks/useContactForm";
+import ContactForm from "../forms/ContactForm";
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState<boolean>(false);
   const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
   const pathname = usePathname();
-  const { sendContactForm, loading, error, success } = useContact();
+  /* const { sendContactForm, loading, error, success } = useContact();
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -33,13 +34,13 @@ const Navbar = () => {
   };
 
   const handleChange = (
-    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>,
   ) => {
     setFormData((prev) => ({
       ...prev,
       [e.target.id]: e.target.value,
     }));
-  };
+  }; */
   return (
     <>
       <nav className="fixed w-full top-[0] z-[50] backdrop-blur-md shadow-sm">
@@ -160,14 +161,8 @@ const Navbar = () => {
         <Modal
           isOpen={isModalOpen}
           title="Contact Us"
-          size="md"
-          // onClose={() => setIsModalOpen(false)}
-          onClose={() => {
-            if (!loading) {
-              setIsModalOpen(false);
-              setFormData({ name: "", email: "", subject: "", message: "" });
-            }
-          }}
+          size="lg" // Increased size for better layout
+          onClose={() => setIsModalOpen(false)}
         >
           <div className="space-y-6">
             <div className="flex items-center gap-6 p-4 bg-gray-50 rounded-lg">
@@ -191,112 +186,10 @@ const Navbar = () => {
               </div>
             </div>
 
-            <form onSubmit={handleSubmit} className="space-y-4">
-              {error && (
-                <div className="p-3 bg-red-50 text-red-600 rounded-lg">
-                  {error}
-                </div>
-              )}
-              {isSuccess && (
-                <div className="p-3 bg-green-50 text-green-600 rounded-lg flex items-center justify-between">
-                  <span>{success}</span>
-                </div>
-              )}
-              <div className="grid md:grid-cols-2 gap-4">
-                <div>
-                  <label
-                    htmlFor="name"
-                    className="block text-sm font-medium text-gray-700 mb-1"
-                  >
-                    Name
-                  </label>
-                  <input
-                    type="text"
-                    id="name"
-                    value={formData.name}
-                    onChange={handleChange}
-                    required
-                    minLength={2}
-                    className="w-full px-4 py-2 rounded-lg border border-gray-200 focus:border-blue-500 focus:ring-2 focus:ring-blue-200 outline-none transition-all"
-                    placeholder="John Doe"
-                  />
-                </div>
-                <div>
-                  <label
-                    htmlFor="email"
-                    className="block text-sm font-medium text-gray-700 mb-1"
-                  >
-                    Email
-                  </label>
-                  <input
-                    type="email"
-                    id="email"
-                    value={formData.email}
-                    onChange={handleChange}
-                    required
-                    pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$"
-                    className="w-full px-4 py-2 rounded-lg border border-gray-200 focus:border-blue-500 focus:ring-2 focus:ring-blue-200 outline-none transition-all"
-                    placeholder="john@example.com"
-                  />
-                </div>
-              </div>
-
-              <div>
-                <label
-                  htmlFor="subject"
-                  className="block text-sm font-medium text-gray-700 mb-1"
-                >
-                  Subject
-                </label>
-                <input
-                  type="text"
-                  id="subject"
-                  value={formData.subject}
-                  onChange={handleChange}
-                  required
-                  minLength={3}
-                  className="w-full px-4 py-2 rounded-lg border border-gray-200 focus:border-blue-500 focus:ring-2 focus:ring-blue-200 outline-none transition-all"
-                  placeholder="Project Discussion"
-                />
-              </div>
-
-              <div>
-                <label
-                  htmlFor="message"
-                  className="block text-sm font-medium text-gray-700 mb-1"
-                >
-                  Message
-                </label>
-                <textarea
-                  id="message"
-                  value={formData.message}
-                  onChange={handleChange}
-                  required
-                  minLength={10}
-                  rows={4}
-                  className="w-full px-4 py-2 rounded-lg border border-gray-200 focus:border-blue-500 focus:ring-2 focus:ring-blue-200 outline-none transition-all resize-none"
-                  placeholder="Your message here..."
-                />
-              </div>
-
-              <div className="flex justify-end gap-3">
-                <button
-                  type="button"
-                  onClick={() => setIsModalOpen(false)}
-                  disabled={loading}
-                  className="px-6 py-2.5 border border-gray-300 text-gray-700 rounded-lg hover:bg-gray-50 transition-all disabled:opacity-50 disabled:cursor-not-allowed"
-                >
-                  Cancel
-                </button>
-                <button
-                  type="submit"
-                  disabled={loading || success !== null}
-                  className="px-6 py-2.5 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-all disabled:opacity-50 disabled:cursor-not-allowed"
-                >
-                  {loading ? "Sending..." : success ? "Sent!" : "Send Message"}
-                </button>
-              </div>
-            </form>
+            <ContactForm
+              onSuccess={() => setIsModalOpen(false)}
+              onCancel={() => setIsModalOpen(false)}
+            />
           </div>
         </Modal>
       )}

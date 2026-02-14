@@ -1,5 +1,5 @@
 import Layout from "@/components/layouts/Layout";
-import About from "@/pages/abouts/About";
+import About from "@/components/about/About";
 import React from "react";
 
 const page = () => {

@@ -1,14 +1,11 @@
 "use client";
-import Layout from "@/components/layouts/Layout";
-import Projects from "@/pages/projects/Projects";
+import Projects from "@/components/projects/ProjectsList";
 import React from "react";
 
 const Page = () => {
   return (
     <>
-      <Layout>
-        <Projects />
-      </Layout>
+      <Projects />
     </>
   );
 };

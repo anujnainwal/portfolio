@@ -4,6 +4,9 @@ interface ContactForm {
   name: string;
   email: string;
   subject: string;
+  projectType: string;
+  budget: string;
+  timeline: string;
   message: string;
 }
 

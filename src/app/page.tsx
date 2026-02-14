@@ -15,7 +15,7 @@ import {
   DialogTrigger,
 } from "@/components/ui/dialog";
 import Magnetic from "@/components/ui/magnetic";
-import { motion } from "framer-motion";
+import { motion, Variants } from "framer-motion";
 import dynamic from "next/dynamic";
 import { SHOW_TESTIMONIALS } from "@/data/testimonials";
 
@@ -52,7 +52,7 @@ const Home = () => {
   const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
 
   // Animation variants
-  const containerVariants = {
+  const containerVariants: Variants = {
     hidden: { opacity: 0 },
     visible: {
       opacity: 1,
@@ -62,7 +62,7 @@ const Home = () => {
     },
   };
 
-  const itemVariants = {
+  const itemVariants: Variants = {
     hidden: { y: 20, opacity: 0 },
     visible: {
       y: 0,

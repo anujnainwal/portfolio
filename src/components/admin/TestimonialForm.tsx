@@ -1,6 +1,7 @@
 "use client";
 
-import { useForm } from "react-hook-form";
+import { FieldValues, SubmitHandler, useForm } from "react-hook-form";
+
 import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
 import { testimonialSchema } from "@/lib/validations";
@@ -43,11 +44,13 @@ export default function TestimonialForm({ initialData }: TestimonialFormProps) {
     handleSubmit,
     formState: { errors },
   } = useForm<TestimonialFormValues>({
-    resolver: zodResolver(testimonialSchema),
-    defaultValues,
+    resolver: zodResolver(testimonialSchema) as any,
+    defaultValues: defaultValues as any,
   });
 
-  const onSubmit = async (data: TestimonialFormValues) => {
+  const onSubmit: SubmitHandler<FieldValues> = async (values) => {
+    const data = values as TestimonialFormValues;
+
     setIsSubmitting(true);
     setError(null);
 

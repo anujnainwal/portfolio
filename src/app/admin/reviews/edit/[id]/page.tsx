@@ -41,7 +41,9 @@ export default async function EditTestimonialPage({
         <div>
           <h1 className="text-2xl font-bold text-gray-900">Edit Review</h1>
           <p className="text-sm text-gray-500">
-            Updating review from: {testimonial.name}
+            <p className="text-sm text-gray-500">
+              Updating review from: {(testimonial as any).name}
+            </p>
           </p>
         </div>
       </div>

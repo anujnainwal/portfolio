@@ -22,6 +22,18 @@ import {
   SiFirebase,
 } from "react-icons/si";
 
+interface Project {
+  id: string;
+  title: string;
+  category: string;
+  shortDescription: string;
+  image?: string;
+  color: string;
+  technologies: string[];
+  github: string;
+  live: string;
+}
+
 // Helper to get icon for technology
 const getTechIcon = (tech: string) => {
   const normalize = tech.toLowerCase();
@@ -115,7 +127,7 @@ const ImageComponent = ({ src, alt, ...props }: ImageComponentProps) => {
 const ProjectsPage = () => {
   const [currentPage, setCurrentPage] = useState(1);
   const [filter, setFilter] = useState("All");
-  const [projects, setProjects] = useState<any[]>([]);
+  const [projects, setProjects] = useState<Project[]>([]);
   const [loading, setLoading] = useState(true);
   const projectsPerPage = 6;
 

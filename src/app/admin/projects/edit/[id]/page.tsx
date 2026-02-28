@@ -40,7 +40,9 @@ export default async function EditProjectPage({
         </Link>
         <div>
           <h1 className="text-2xl font-bold text-gray-900">Edit Project</h1>
-          <p className="text-sm text-gray-500">Updating: {project.title}</p>
+          <p className="text-sm text-gray-500">
+            Updating: {(project as any).title}
+          </p>
         </div>
       </div>
 

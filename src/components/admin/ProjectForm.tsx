@@ -1,6 +1,7 @@
 "use client";
 
-import { useForm } from "react-hook-form";
+import { FieldValues, SubmitHandler, useForm } from "react-hook-form";
+
 import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
 import { projectSchema } from "@/lib/validations";
@@ -65,11 +66,14 @@ export default function ProjectForm({ initialData }: ProjectFormProps) {
     handleSubmit,
     formState: { errors },
   } = useForm<ProjectFormValues>({
-    resolver: zodResolver(projectSchema),
-    defaultValues,
+    resolver: zodResolver(projectSchema) as any,
+
+    defaultValues: defaultValues as any,
   });
 
-  const onSubmit = async (data: ProjectFormValues) => {
+  const onSubmit: SubmitHandler<FieldValues> = async (values) => {
+    const data = values as ProjectFormValues;
+
     setIsSubmitting(true);
     setError(null);
 

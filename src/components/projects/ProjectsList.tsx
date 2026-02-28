@@ -1,10 +1,10 @@
 "use client";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { AnimatePresence, motion, Variants } from "framer-motion";
 import Image from "next/image";
 import Link from "next/link";
 import { FaGithub, FaExternalLinkAlt, FaArrowRight } from "react-icons/fa";
-import { projects, Project } from "@/data/projects";
+import { getPublicProjects } from "@/actions/public";
 import {
   SiTypescript,
   SiReact,
@@ -94,7 +94,6 @@ interface ImageComponentProps extends Omit<
 }
 
 const ImageComponent = ({ src, alt, ...props }: ImageComponentProps) => {
-  // Check if src is an external URL
   const isExternal =
     typeof src === "string" && (src.startsWith("http") || src.startsWith("//"));
 
@@ -116,11 +115,28 @@ const ImageComponent = ({ src, alt, ...props }: ImageComponentProps) => {
 const ProjectsPage = () => {
   const [currentPage, setCurrentPage] = useState(1);
   const [filter, setFilter] = useState("All");
+  const [projects, setProjects] = useState<any[]>([]);
+  const [loading, setLoading] = useState(true);
   const projectsPerPage = 6;
 
-  // Deriving categories from actual data would be better in a real app,
-  // but hardcoding common ones is fine for now.
-  const categories = ["All", "Full Stack", "Frontend", "Web App"];
+  useEffect(() => {
+    const fetchProjects = async () => {
+      try {
+        const data = await getPublicProjects();
+        setProjects(data);
+      } catch (error) {
+        console.error(error);
+      } finally {
+        setLoading(false);
+      }
+    };
+    fetchProjects();
+  }, []);
+
+  const categories = [
+    "All",
+    ...Array.from(new Set(projects.map((p) => p.category))),
+  ];
 
   const filteredProjects =
     filter === "All"
@@ -131,6 +147,14 @@ const ProjectsPage = () => {
     (currentPage - 1) * projectsPerPage,
     currentPage * projectsPerPage,
   );
+
+  if (loading) {
+    return (
+      <div className="py-20 px-4 md:px-8 max-w-7xl mx-auto flex justify-center">
+        <div className="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-gray-900"></div>
+      </div>
+    );
+  }
 
   return (
     <div className="py-20 px-4 md:px-8 max-w-7xl mx-auto">

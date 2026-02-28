@@ -2,7 +2,7 @@
 import React, { useState } from "react";
 import Image from "next/image";
 import { FaGithub, FaLinkedin, FaTwitter } from "react-icons/fa";
-import PersonalImage from "../../public/images/anuj.jpg";
+import PersonalImage from "../../../public/images/anuj.jpg";
 import Link from "next/link";
 import { MdEmail } from "react-icons/md";
 import { Button } from "@/components/ui/button";

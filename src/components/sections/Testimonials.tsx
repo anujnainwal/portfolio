@@ -1,12 +1,33 @@
 "use client";
 
-import React, { useRef } from "react";
+import React, { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import Image from "next/image";
-import { testimonials } from "@/data/testimonials";
 import { FaQuoteLeft } from "react-icons/fa";
+import { getPublicTestimonials } from "@/actions/public";
 
 export default function Testimonials() {
+  const [testimonials, setTestimonials] = useState<any[]>([]);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    const fetchTestimonials = async () => {
+      try {
+        const data = await getPublicTestimonials();
+        setTestimonials(data);
+      } catch (error) {
+        console.error(error);
+      } finally {
+        setLoading(false);
+      }
+    };
+    fetchTestimonials();
+  }, []);
+
+  if (loading || testimonials.length === 0) {
+    return null; // or a nice subtle skeleton loader
+  }
+
   return (
     <section className="py-20 md:py-32 bg-gray-50 overflow-hidden relative">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-16 text-center relative z-10">
@@ -41,7 +62,10 @@ export default function Testimonials() {
             }}
           >
             {[...testimonials, ...testimonials, ...testimonials].map((t, i) => (
-              <div key={`${t.id}-${i}`} className="w-[350px] md:w-[450px]">
+              <div
+                key={`${t._id || t.id}-${i}`}
+                className="w-[350px] md:w-[450px]"
+              >
                 <TestimonialCard testimonial={t} />
               </div>
             ))}

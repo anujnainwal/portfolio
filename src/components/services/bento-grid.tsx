@@ -9,7 +9,6 @@ import {
   FaPaintBrush,
   FaMobileAlt,
   FaRocket,
-  FaDatabase,
 } from "react-icons/fa";
 
 const services = [
@@ -56,6 +55,7 @@ export default function BentoGrid() {
   );
 }
 
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 function BentoCard({ service, index }: { service: any; index: number }) {
   return (
     <motion.div

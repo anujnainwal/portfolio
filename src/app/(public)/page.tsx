@@ -91,7 +91,7 @@ const Home = () => {
                 className="text-4xl md:text-5xl font-bold mb-6 leading-tight"
               >
                 <span className="block">Full Stack Engineer</span>
-                <span className="block text-blue-600">
+                <span className="block text-blue-700 font-extrabold">
                   Building Scalable Web Platforms
                 </span>
               </motion.h1>

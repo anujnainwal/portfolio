@@ -7,6 +7,7 @@ import { FaQuoteLeft } from "react-icons/fa";
 import { getPublicTestimonials } from "@/actions/public";
 
 export default function Testimonials() {
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const [testimonials, setTestimonials] = useState<any[]>([]);
   const [loading, setLoading] = useState(true);
 
@@ -76,6 +77,7 @@ export default function Testimonials() {
   );
 }
 
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 function TestimonialCard({ testimonial }: { testimonial: any }) {
   return (
     <div className="bg-white/80 backdrop-blur-sm p-8 md:p-10 rounded-3xl shadow-sm border border-white/50 h-full flex flex-col hover:shadow-xl hover:-translate-y-1 transition-all duration-300 group">
@@ -83,7 +85,7 @@ function TestimonialCard({ testimonial }: { testimonial: any }) {
         <FaQuoteLeft size={40} />
       </div>
       <p className="text-gray-700 text-lg md:text-xl leading-relaxed mb-8 flex-grow font-medium">
-        "{testimonial.quote}"
+        &quot;{testimonial.quote}&quot;
       </p>
       <div className="flex items-center gap-5 mt-auto pt-6 border-t border-gray-100">
         <div className="relative w-16 h-16 rounded-full overflow-hidden border-2 border-white shadow-md">
@@ -91,6 +93,7 @@ function TestimonialCard({ testimonial }: { testimonial: any }) {
             src={testimonial.image || "/images/no-image.jpg"}
             alt={testimonial.name}
             fill
+            sizes="64px"
             className="object-cover"
           />
         </div>

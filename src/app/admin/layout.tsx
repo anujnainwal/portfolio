@@ -24,6 +24,10 @@ export default function AdminLayout({
     { name: "Reviews", href: "/admin/reviews", icon: MessageSquareQuote },
   ];
 
+  if (pathname === "/admin/login") {
+    return <div className="min-h-screen bg-gray-50">{children}</div>;
+  }
+
   return (
     <div className="min-h-screen bg-gray-50 flex">
       {/* Sidebar */}

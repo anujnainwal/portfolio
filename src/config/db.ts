@@ -13,6 +13,7 @@ interface MongooseCache {
 }
 
 declare global {
+  // eslint-disable-next-line @typescript-eslint/no-namespace
   namespace NodeJS {
     interface Global {
       mongoose: MongooseCache;
@@ -24,9 +25,11 @@ if (!MONGODB_URI) {
   throw new Error("Please define the MONGODB_URI environment variable");
 }
 
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 let cached: MongooseCache = (global as any).mongoose;
 
 if (!cached) {
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   cached = (global as any).mongoose = { conn: null, promise: null };
 }
 

@@ -12,7 +12,7 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
   return (
     <div className="flex min-h-screen flex-col">
       <ModernNavbar />
-      <main className="flex-1 py-3.5" style={{ paddingTop: 85 }}>
+      <main className="flex-1 py-3.5" style={{ paddingTop: 120 }}>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="container mx-auto">{children}</div>
         </div>

@@ -14,7 +14,7 @@ const rateLimit = new LRUCache<string, number>({
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 export async function login(prevState: any, formData: FormData) {
-  const email = formData.get("email")?.toString() || "";
+  const email = formData.get("email")?.toString().trim().toLowerCase() || "";
   const password = formData.get("password")?.toString() || "";
   const recaptchaToken = formData.get("g-recaptcha-response")?.toString();
 
@@ -58,7 +58,7 @@ export async function login(prevState: any, formData: FormData) {
     return { error: "Too many login attempts. Please try again in 15 minutes." };
   }
 
-  const validEmail = process.env.ADMIN_EMAIL;
+  const validEmail = process.env.ADMIN_EMAIL?.toLowerCase();
   const adminPasswordHash = process.env.ADMIN_PASSWORD_HASH;
 
   if (!validEmail || !adminPasswordHash) {

@@ -5,6 +5,7 @@ export interface Project {
   title: string;
   shortDescription: string;
   fullDescription: string;
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   image: any;
   technologies: string[];
   github: string;

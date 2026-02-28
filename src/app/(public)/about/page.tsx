@@ -194,16 +194,16 @@ const AboutPage = () => {
                   </h3>
                 </div>
 
-                <div className="grid grid-cols-2 gap-4">
+                <div className="flex flex-wrap gap-3">
                   {category.items.map((skill, i) => (
                     <div
                       key={i}
-                      className="flex items-center gap-2 p-2 rounded-lg hover:bg-gray-50 transition-colors"
+                      className="flex items-center gap-2 p-2.5 rounded-lg hover:bg-gray-50 transition-colors border border-transparent hover:border-gray-100 bg-gray-50/50"
                     >
-                      <span className="text-xl text-gray-400">
+                      <span className="text-xl text-gray-400 shrink-0">
                         {skill.icon}
                       </span>
-                      <span className="text-gray-700 font-medium">
+                      <span className="text-gray-700 font-medium text-sm whitespace-nowrap">
                         {skill.name}
                       </span>
                     </div>

@@ -1,6 +1,6 @@
 "use client";
 
-import { useActionState, useState, useRef } from "react";
+import { useActionState, useState, useRef, useEffect } from "react";
 import { login } from "@/actions/auth";
 import { Mail, Lock, Eye, EyeOff } from "lucide-react";
 import ReCAPTCHA from "react-google-recaptcha";
@@ -13,14 +13,12 @@ export default function LoginPage() {
   const [showPassword, setShowPassword] = useState(false);
   const recaptchaRef = useRef<ReCAPTCHA>(null);
 
-  const handleSubmit = (formData: FormData) => {
-    // Manually add the recaptcha token to the form data
-    const token = recaptchaRef.current?.getValue();
-    if (token) {
-      formData.set("g-recaptcha-response", token);
+  // Auto-reset reCAPTCHA on failed login attempts
+  useEffect(() => {
+    if (errorMessage?.error) {
+      recaptchaRef.current?.reset();
     }
-    formAction(formData);
-  };
+  }, [errorMessage]);
 
   return (
     <div className="min-h-screen flex items-center justify-center bg-gray-50 px-4 sm:px-6 lg:px-8">
@@ -33,7 +31,7 @@ export default function LoginPage() {
             Sign in to manage your portfolio and reviews
           </p>
         </div>
-        <form className="mt-8 space-y-6" action={handleSubmit}>
+        <form className="mt-8 space-y-6" action={formAction}>
           <div className="space-y-4">
             <div>
               <label htmlFor="email" className="sr-only">

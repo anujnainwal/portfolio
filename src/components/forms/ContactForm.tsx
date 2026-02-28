@@ -135,7 +135,7 @@ const ContactForm: React.FC<ContactFormProps> = ({ onSuccess, onCancel }) => {
         />
       </div>
 
-      <div className="grid md:grid-cols-3 gap-4">
+      <div className="space-y-4">
         <div className="space-y-2">
           <Label className="font-medium text-gray-900">Project Type</Label>
           <Select
@@ -154,40 +154,43 @@ const ContactForm: React.FC<ContactFormProps> = ({ onSuccess, onCancel }) => {
           </Select>
         </div>
 
-        <div className="space-y-2">
-          <Label className="font-medium text-gray-900">Budget</Label>
-          <Select
-            onValueChange={(value) => handleSelectChange("budget", value)}
-            required
-          >
-            <SelectTrigger className="text-gray-900">
-              <SelectValue placeholder="Select Budget" />
-            </SelectTrigger>
-            <SelectContent>
-              <SelectItem value="< $1k">&lt; $1k</SelectItem>
-              <SelectItem value="$1k - $5k">$1k - $5k</SelectItem>
-              <SelectItem value="$5k - $10k">$5k - $10k</SelectItem>
-              <SelectItem value="> $10k">&gt; $10k</SelectItem>
-            </SelectContent>
-          </Select>
-        </div>
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+          <div className="space-y-2">
+            <Label className="font-medium text-gray-900">Budget</Label>
+            <Select
+              onValueChange={(value) => handleSelectChange("budget", value)}
+              required
+            >
+              <SelectTrigger className="text-gray-900 w-full overflow-hidden">
+                <SelectValue placeholder="Select Budget" />
+              </SelectTrigger>
+              <SelectContent>
+                <SelectItem value="< $1k">&lt; $1k</SelectItem>
+                <SelectItem value="$1k - $5k">$1k - $5k</SelectItem>
+                <SelectItem value="$5k - $10k">$5k - $10k</SelectItem>
+                <SelectItem value="> $10k">&gt; $10k</SelectItem>
+                <SelectItem value="Custom">Flexible / Let's Talk</SelectItem>
+              </SelectContent>
+            </Select>
+          </div>
 
-        <div className="space-y-2">
-          <Label className="font-medium text-gray-900">Timeline</Label>
-          <Select
-            onValueChange={(value) => handleSelectChange("timeline", value)}
-            required
-          >
-            <SelectTrigger className="text-gray-900">
-              <SelectValue placeholder="Select Timeline" />
-            </SelectTrigger>
-            <SelectContent>
-              <SelectItem value="Urgent">Urgent</SelectItem>
-              <SelectItem value="1-2 Weeks">1-2 Weeks</SelectItem>
-              <SelectItem value="1 Month">1 Month</SelectItem>
-              <SelectItem value="Flexible">Flexible</SelectItem>
-            </SelectContent>
-          </Select>
+          <div className="space-y-2">
+            <Label className="font-medium text-gray-900">Timeline</Label>
+            <Select
+              onValueChange={(value) => handleSelectChange("timeline", value)}
+              required
+            >
+              <SelectTrigger className="text-gray-900 w-full">
+                <SelectValue placeholder="Select Timeline" />
+              </SelectTrigger>
+              <SelectContent>
+                <SelectItem value="Urgent">Urgent</SelectItem>
+                <SelectItem value="1-2 Weeks">1-2 Weeks</SelectItem>
+                <SelectItem value="1 Month">1 Month</SelectItem>
+                <SelectItem value="Flexible">Flexible</SelectItem>
+              </SelectContent>
+            </Select>
+          </div>
         </div>
       </div>
 

@@ -132,7 +132,7 @@ const Home = () => {
                       </Magnetic>
                     </div>
                   </DialogTrigger>
-                  <DialogContent className="sm:max-w-[500px]">
+                  <DialogContent className="sm:max-w-[500px] max-h-[90vh] overflow-y-auto overflow-x-hidden">
                     <DialogHeader>
                       <DialogTitle>Let's Build Something Amazing</DialogTitle>
                     </DialogHeader>

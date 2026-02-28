@@ -1,6 +1,6 @@
 "use server";
 
-import { getSession } from "@/auth";
+import { verifySession } from "@/lib/session";
 import { revalidatePath } from "next/cache";
 import dbConnect from "@/lib/db";
 import Project from "@/models/Project";
@@ -9,7 +9,7 @@ import { projectSchema, testimonialSchema } from "@/lib/validations";
 
 // Helper to check authentication
 async function checkAuth() {
-  const session = await getSession();
+  const session = await verifySession();
   if (!session) {
     throw new Error("Unauthorized");
   }

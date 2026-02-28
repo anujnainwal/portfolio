@@ -21,7 +21,12 @@ export async function decrypt(input: string): Promise<any> {
 
 export async function getSession() {
   const cookieStore = await cookies();
-  const session = cookieStore.get("session")?.value;
-  if (!session) return null;
-  return await decrypt(session);
+  const sessionToken = cookieStore.get("session")?.value;
+  if (!sessionToken) return null;
+  
+  try {
+    return await decrypt(sessionToken);
+  } catch (error) {
+    return null;
+  }
 }
